@@ -162,6 +162,7 @@ class Calendar extends Component {
     } else {
       const DayComp = this.getDayComponent();
       const date = day.getDate();
+      const markDate = this.getDateMarking(day);
       dayComp = (
         <DayComp
           key={id}
@@ -169,9 +170,9 @@ class Calendar extends Component {
           theme={this.props.theme}
           onPress={this.pressDay}
           date={xdateToData(day)}
-          marking={this.getDateMarking(day)}
+          marking={markDate}
         >
-          {date}
+          {(markDate && markDate.shortCode) ? markDate.shortCode : date}
         </DayComp>
       );
     }
